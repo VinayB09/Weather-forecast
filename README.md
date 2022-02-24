@@ -9,7 +9,7 @@ You only need to provide your location and zip code to get a brief overview of y
 ## Dependency
 
 * Ruby
-    `2.7.3 `
+    `2.7.4 `
 
 * Rails 
     `7.0.2`
