@@ -1,0 +1,5 @@
+if (<%=@error%>) {
+  $('#weather-container').append("<%= escape_javascript render partial: '/partials/error' %>")
+} else {
+  $('#weather-container').append("<%= escape_javascript render partial: '/partials/weather', locals: {temparature: @current_weather, address: @address, daily: @daily_weather, cached: @cached} %>");
+}

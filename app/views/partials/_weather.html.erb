@@ -1,0 +1,27 @@
+<h5> Weather forecast for "<%= address %>" </h5>
+<%if cached %>
+<span class="badge bg-primary">cached</span>
+<%end%>
+<hr/>
+<div class="row">
+  <div class="col-sm-12">
+    <b><%= (Date.today).strftime('%d-%b-%Y') %></b>
+    <h1><%= "#{temparature['main']['temp']}" %><span>&#8457;</span></h1>
+    <h6>
+      <span>Low: <%= "#{temparature['main']['temp']}" %><span>&#8457;</span></span>,
+      <span>High: <%= "#{temparature['main']['temp']}" %><span>&#8457;</span></span>
+    </h6>
+    <span class="badge bg-light text-dark">Feels like: <%= "#{temparature['main']['feels_like']}" %><span>&#8457;</span></span>  
+    <p><span class="badge bg-dark"><%= "#{temparature['weather'][0]['description']}" %></span></p>
+    <%= render partial: 'partials/weather_meta_data', locals: {temparature: temparature} %>
+  </div>
+  <div class="col-sm-12">
+    <h2>Daily forecast for next <%=ENV['NO_OF_FORECAST_DAYS']%> days</h2>
+    <hr>
+    <div class="row">
+    <% daily.each_with_index do |t, key| %>
+      <%= render partial: 'partials/daily_forecast', locals: {t: t, key: key}%>
+    <% end %>
+    </div>
+  </div>
+</div>

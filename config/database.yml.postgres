@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: ENV['POSTGRES_URL']
+  username: Rails.application.credentials.dig(:postgres, :username)
+  password: Rails.application.credentials.dig(:postgres, :password)
+  port: ENV['POSTGRES_PORT']
+
+development:
+  <<: *default
+  database: weather-forecast_development
+test:
+  <<: *default
+  database: weather-forecast_test
+production:
+  <<: *default
+  database: weather-forecast_production

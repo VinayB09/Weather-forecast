@@ -1,0 +1,15 @@
+<h1> Weather forecast </h1>
+<h5> powered by <i>openweather</i></h5>
+<div class="container">
+  <div class="row">
+    <%= form_with url: '/search', method: :get, local: false do |form| %>
+      <label for="address" class="form-label">Full Address</label><br/>
+      <%= form.text_area :address, class: 'form-control', placeholder: 'Eg: London, UK', required: true %><br/>
+      <label for="zip_code" class="form-label">Zip code</label><br/>
+      <%= form.text_field :zip_code, class: 'form-control', placeholder: 'Eg: EC1A', required: true, pattern: ".{4,}", title: "4 characters minimum" %><br/>
+      <%= form.submit "Search", class: 'btn btn-primary' %>
+      <%= button_tag 'Clear', class: 'btn btn-default', type: 'reset' %>
+    <% end %>
+  </div>
+  <div class="row"><div id="weather-container"></div></div>
+</div>
